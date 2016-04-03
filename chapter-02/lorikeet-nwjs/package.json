@@ -1,0 +1,8 @@
+{
+  "name": "lorikeet",
+  "version": "1.0.0",
+  "main": "index.html",
+  "dependencies": {
+    "osenv": "^0.1.3"
+  }
+}
