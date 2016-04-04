@@ -5,10 +5,11 @@ body {
 }
 
 #toolbar {
-	position: absolute;
+	top: 0px;
+	position: fixed;
 	background: red;
 	width: 100%;
-	padding: 1em;
+	z-index: 2;
 }
 
 #current-folder {
@@ -18,4 +19,27 @@ body {
 	padding: 0.5em 1em;
 	min-width: 10em;
 	border-radius: 0.2em;
+	margin: 1em;
+}
+
+#main-area {
+	clear: both;
+	margin: 2em;
+	margin-top: 3em;
+	z-index: 1;
+}
+
+.item {
+	position: relative;
+	float: left;
+	padding: 1em;
+	margin: 1em;
+	width: 6em;
+	height: 6em;
+	text-align: center;
+}
+
+.item .filename {
+	padding-top: 1em;
+	font-size: 10pt;
 }
