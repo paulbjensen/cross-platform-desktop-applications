@@ -12,6 +12,6 @@ app.on('window-all-closed', function () {
 
 app.on('ready', function () {
   mainWindow = new BrowserWindow();
-  mainWindow.loadURL('file://' + __dirname + '/index.html');
+  mainWindow.loadURL('file://' + process.cwd() + '/index.html');
   mainWindow.on('closed', function () { mainWindow = null; });
 });
