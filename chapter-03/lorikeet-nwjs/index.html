@@ -14,7 +14,8 @@
     <div id="toolbar">
       <div id="current-folder">
         <script>
-          document.write(getUsersHomeFolder());
+          var fileSystem = require('./fileSystem');
+          document.write(fileSystem.getUsersHomeFolder());
         </script>
       </div>
     </div>
