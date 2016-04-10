@@ -3,10 +3,12 @@
 var document = window.document;
 var fileSystem = require('./fileSystem');
 var search = require('./search');
+var path = require('path');
 var $ = require('jquery');
 
 function displayFolderPath(folderPath) {
-  document.getElementById('current-folder').innerText = folderPath;
+  $('#current-folder').html(convertFolderPathIntoLinks(folderPath));
+  bindCurrentFolderPath();
 }
 
 function clearView() {
@@ -69,6 +71,30 @@ function filterResults(results) {
 
 function resetFilter() {
   $('.item').show();
+}
+
+function convertFolderPathIntoLinks(folderPath) {
+  var folders = folderPath.split(path.sep);
+  var contents	= [];
+  var pathAtFolder = '';
+  folders.forEach(function (folder) {
+    pathAtFolder += folder + path.sep;
+    contents.push(
+      '<span class="path" data-path="' +
+      pathAtFolder.slice(0, -1) + '">' +
+      folder +
+      '</span>'
+    );
+  });
+
+  return contents.join(path.sep).toString();
+}
+
+function bindCurrentFolderPath() {
+  $('span.path').on('click', function (event) {
+    var folderPath = $(event.target).attr('data-path');
+    loadDirectory(folderPath)();
+  });
 }
 
 module.exports = {

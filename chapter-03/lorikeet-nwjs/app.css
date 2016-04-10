@@ -53,3 +53,8 @@ body {
 	border: none;
 	outline: none;
 }
+
+span.path:hover {
+	opacity: 0.7;
+	cursor: pointer;
+}
