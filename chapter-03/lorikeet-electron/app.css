@@ -54,7 +54,7 @@ body {
 	outline: none;
 }
 
-span.path:hover {
+span.path:hover, img:hover {
 	opacity: 0.7;
 	cursor: pointer;
 }
