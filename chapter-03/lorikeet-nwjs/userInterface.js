@@ -2,6 +2,8 @@
 
 var document = window.document;
 var fileSystem = require('./fileSystem');
+var search = require('./search');
+var $ = require('jquery');
 
 function displayFolderPath(folderPath) {
   document.getElementById('current-folder').innerText = folderPath;
@@ -18,6 +20,7 @@ function clearView() {
 
 function loadDirectory(folderPath) {
   return function () {
+    search.resetIndex();
     displayFolderPath(folderPath);
     fileSystem.getFilesInFolder(folderPath, function (err, files) {
       clearView();
@@ -28,10 +31,12 @@ function loadDirectory(folderPath) {
 }
 
 function displayFile(file) {
+  search.addToIndex(file);
   var mainArea = document.getElementById('main-area');
   var template = document.querySelector('#item-template');
   var clone = document.importNode(template.content, true);
   clone.querySelector('img').src = 'images/' + file.type + '.svg';
+  clone.querySelector('img').setAttribute('data-filePath', file.path);
   if (file.type === 'directory') {
     clone.querySelector('img').addEventListener('dblclick', loadDirectory(file.path), false);
   }
@@ -45,7 +50,31 @@ function displayFiles(err, files) {
   files.forEach(displayFile);
 }
 
+function bindSearchField(cb) {
+  document.getElementById('search').addEventListener('keyup', cb, false);
+}
+
+function filterResults(results) {
+  var validFilePaths = results.map(function (result) { return result.ref; });
+
+  $('.item').each(function (index, item) {
+    var filePath = $(item).find('img').attr('data-filePath');
+    if (validFilePaths.indexOf(filePath) !== -1) {
+      $(item).show();
+    } else {
+      $(item).hide();
+    }
+  });
+}
+
+function resetFilter() {
+  $('.item').show();
+}
+
 module.exports = {
   displayFiles: displayFiles,
-  loadDirectory: loadDirectory
+  loadDirectory: loadDirectory,
+  bindSearchField: bindSearchField,
+  filterResults: filterResults,
+  resetFilter: resetFilter
 };

@@ -4,6 +4,8 @@
   "main": "index.html",
   "dependencies": {
     "async": "^2.0.0-rc.2",
+    "jquery": "^2.2.3",
+    "lunr": "^0.7.0",
     "osenv": "^0.1.3"
   }
 }
