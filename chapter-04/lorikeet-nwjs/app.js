@@ -6,7 +6,7 @@ var search = require('./search');
 
 function main() {
   var folderPath = fileSystem.getUsersHomeFolder();
-  userInterface.loadDirectory(folderPath)(window);
+  userInterface.loadDirectory(folderPath)();
   userInterface.bindSearchField(function (event) {
     var query = event.target.value;
     if (query === '') {

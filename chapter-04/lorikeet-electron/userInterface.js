@@ -1,6 +1,6 @@
 'use strict';
 
-var document;
+var document = window.document;
 var fileSystem = require('./fileSystem');
 var search = require('./search');
 var path = require('path');
@@ -21,8 +21,7 @@ function clearView() {
 }
 
 function loadDirectory(folderPath) {
-  return function (window) {
-    if (!document) document = window.document;
+  return function () {
     search.resetIndex();
     displayFolderPath(folderPath);
     fileSystem.getFilesInFolder(folderPath, function (err, files) {
