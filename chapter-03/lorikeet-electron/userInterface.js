@@ -1,6 +1,6 @@
 'use strict';
 
-var document = window.document;
+var document;
 var fileSystem = require('./fileSystem');
 
 function displayFolderPath(folderPath) {
@@ -17,7 +17,8 @@ function clearView() {
 }
 
 function loadDirectory(folderPath) {
-  return function () {
+  return function (window) {
+    if (!document) document = window.document;
     displayFolderPath(folderPath);
     fileSystem.getFilesInFolder(folderPath, function (err, files) {
       clearView();
