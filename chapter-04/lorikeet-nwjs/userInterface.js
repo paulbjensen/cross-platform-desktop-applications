@@ -1,13 +1,13 @@
 'use strict';
 
-var document = window.document;
+var document;
 var fileSystem = require('./fileSystem');
 var search = require('./search');
 var path = require('path');
-var $ = require('jquery');
 
 function displayFolderPath(folderPath) {
-  $('#current-folder').html(convertFolderPathIntoLinks(folderPath));
+  document.getElementById('current-folder')
+    .innerHTML = convertFolderPathIntoLinks(folderPath);
   bindCurrentFolderPath();
 }
 
@@ -21,7 +21,8 @@ function clearView() {
 }
 
 function loadDirectory(folderPath) {
-  return function () {
+  return function (window) {
+    if (!document) document = window.document;
     search.resetIndex();
     displayFolderPath(folderPath);
     fileSystem.getFilesInFolder(folderPath, function (err, files) {
@@ -42,9 +43,8 @@ function displayFile(file) {
   if (file.type === 'directory') {
     clone.querySelector('img').addEventListener('dblclick', loadDirectory(file.path), false);
   } else {
-		clone.querySelector('img').addEventListener('dblclick', fileSystem.openFile(file.path), false);
-	}
-
+    clone.querySelector('img').addEventListener('dblclick', fileSystem.openFile(file.path), false);
+  }
 
   clone.querySelector('.filename').innerText = file.file;
   mainArea.appendChild(clone);
@@ -62,18 +62,22 @@ function bindSearchField(cb) {
 function filterResults(results) {
   var validFilePaths = results.map(function (result) { return result.ref; });
 
-  $('.item').each(function (index, item) {
-    var filePath = $(item).find('img').attr('data-filePath');
+  var items = document.getElementsByClassName('item');
+  for (var i = 0; i < items.length; i++) {
+    var item = items[i];
+    var filePath = item.getElementsByTagName('img')[0]
+      .getAttribute('data-filepath');
     if (validFilePaths.indexOf(filePath) !== -1) {
-      $(item).show();
+      item.style = null;
     } else {
-      $(item).hide();
+      item.style = 'display:none;';
     }
-  });
+  }
 }
 
 function resetFilter() {
-  $('.item').show();
+  var items = document.getElementsByClassName('item');
+  for (var i = 0; i < items.length; i++) { items[i].style = null; }
 }
 
 function convertFolderPathIntoLinks(folderPath) {
@@ -94,10 +98,15 @@ function convertFolderPathIntoLinks(folderPath) {
 }
 
 function bindCurrentFolderPath() {
-  $('span.path').on('click', function (event) {
-    var folderPath = $(event.target).attr('data-path');
+  var load = function (event) {
+    var folderPath = event.target.getAttribute('data-path');
     loadDirectory(folderPath)();
-  });
+  };
+
+  var paths = document.getElementsByClassName('path');
+  for (var i = 0; i < paths.length; i++) {
+    paths[i].addEventListener('click', load, false);
+  }
 }
 
 module.exports = {
