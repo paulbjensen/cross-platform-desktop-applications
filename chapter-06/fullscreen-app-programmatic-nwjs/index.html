@@ -1,0 +1,19 @@
+<html>
+  <head>
+	<title>Fullscreen app programmatic NW.js</title>
+	<script>
+    'use strict';
+
+    var gui = require('nw.gui');
+    var win = gui.Window.get();
+
+    function goFullScreen() {
+      win.enterFullscreen();
+		}
+	</script>
+  </head>
+  <body>
+    <h1>Fullscreen app example</h1>
+    <button onclick="goFullScreen();">Go full screen</button>
+  </body>
+</html>
