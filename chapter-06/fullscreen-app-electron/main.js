@@ -11,7 +11,7 @@ app.on('window-all-closed', function () {
 });
 
 app.on('ready', function () {
-  mainWindow = new BrowserWindow({ width: 400, height: 200 });
+  mainWindow = new BrowserWindow({ fullscreen: true });
   mainWindow.loadURL('file://' + __dirname + '/index.html');
   mainWindow.on('closed', function () { mainWindow = null; });
 });
