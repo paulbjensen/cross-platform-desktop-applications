@@ -22,7 +22,6 @@ var notes = [
 	}
 ];
 
-// NOTE - this needs to happen on the client-side JS
 function displayNote (note) {
 	mainWindow.webContents.send('displayNote', note);
 }
