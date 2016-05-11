@@ -22,14 +22,19 @@ var notes = [
 	}
 ];
 
+// NOTE - this needs to happen on the client-side JS
 function displayNote (note) {
-	return function () {
-		
-	}
+	mainWindow.webContents.send('displayNote', note);
 }
 
 function addNoteToMenu (note) {
-	return { label: note.title, type: 'normal', click: displayNote(note) };
+	return {
+		label: note.title,
+		type: 'normal',
+		click: function () {
+			displayNote(note);
+		}
+	};
 }
 
 app.on('ready', function () {
@@ -37,4 +42,11 @@ app.on('ready', function () {
   var contextMenu = Menu.buildFromTemplate(notes.map(addNoteToMenu));
   appIcon.setToolTip('Notes app');
   appIcon.setContextMenu(contextMenu);
+
+	mainWindow = new BrowserWindow({ width: 800, height: 600 });
+	mainWindow.loadURL('file://' + __dirname + '/index.html');
+	mainWindow.webContents.on('dom-ready', function () {
+		displayNote(notes[0]);
+	});
+
 });
