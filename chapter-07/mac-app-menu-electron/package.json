@@ -1,5 +1,8 @@
 {
-  "name"    : "mac-app-menu-electron",
-  "version" : "1.0.0",
-  "main"    : "main.js"
+  "name": "mac-app-menu-electron",
+  "version": "1.0.0",
+  "main": "main.js",
+  "dependencies": {
+    "electron-default-menu": "^0.1.1"
+  }
 }
