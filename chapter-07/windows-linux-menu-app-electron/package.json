@@ -1,0 +1,8 @@
+{
+  "name": "windows-linux-menu-app-electron",
+  "main": "main.js",
+  "version": "1.0.0",
+  "dependencies": {
+    "electron-prebuilt": "^1.2.1"
+  }
+}
