@@ -16,7 +16,7 @@ var template = [
     label: 'File',
     submenu: [
       {
-        label: 'Say hello',
+        label: 'Say Hello',
         click: sayHello
       },
       {
