@@ -17,10 +17,14 @@ app.on('ready', function () {
   mainWindow.on('closed', function () { mainWindow = null; });
 });
 
-function readFile (event, filePath) {
-	fs.readFile(filePath, function (err, data) {
-		ipc.emit('fileRead', err, data);
-	});
+function readFile (event, files) {
+  if (files) {
+    // We can only load one file in the app, so we select the first
+    var filePath = files[0];
+  	fs.readFile(filePath, 'utf8', function (err, data) {
+      event.sender.send('fileRead', err, data);
+  	});
+  }
 };
 
 // Handles reading the contents of a file
@@ -28,6 +32,6 @@ ipc.on('readFile', readFile);
 
 ipc.on('saveFile', function (currentFile, content) {
 	fs.writeFile(currentFile, content, function (err) {
-		ipc.emite('fileSaved', err);
+		event.sender.send('fileSaved', err);
 	});
 });

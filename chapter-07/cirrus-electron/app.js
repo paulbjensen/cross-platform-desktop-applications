@@ -3,96 +3,58 @@
 // Dependencies
 //
 var electron 	= require('electron');
-var Menu    	= electron.Menu;
+var Menu    	= electron.remote.Menu;
 var ipc     	= electron.ipcRenderer;
 var dialog    = electron.remote.dialog;
 var currentFile;
 var content;
 
-ipc.on('fileRead', function (err, data) {
-	setContent(data);
+ipc.on('fileRead', function (event, err, data) {
+	if (err) throw(err);
 	hideSelectFileButton();
 	showViewMode('design');
 });
 
 ipc.on('fileSaved', function (err) {
-	if (err) alert('There was an error');
+	if (err) alert('There was an error saving the file');
 });
 
-function openFile () {
-	dialog.showOpenDialog({
-		properties: ['openFile'],
-		filters: {name: 'HTML Files', extensions: ['htm', 'html']}
-	}, function (files) {
-		alert('HAPPENED');
-		alert(files);
-		var file = files[0];
-		console.log(file);
+function openFile (cb) {
+	dialog.showOpenDialog(function (filePath) {
+			ipc.send('readFile', filePath);
+			if (cb && typeof cb === 'function') cb();
 	});
-
-	// openFileDialog(function (filePath) {
-	// 	ipc.send('readFile', filePath);
-	// });
 }
 
 function saveFile () {
 	ipc.send('saveFile', currentFile, content);
 }
 
-// TODO - replace with Electron's code equivalent for menu items
 function loadMenu () {
+	var template = [
+	  {
+	    label: 'File',
+	    submenu: [
+	      {
+	        label: 'Open File',
+	        click: openFile
+	      },
+	      {
+	        label: 'Save',
+	        click: saveFile
+	      }
+	    ]
+	  }
+	];
 
-	var menuBar = new gui.Menu({type:'menubar'});
-
-	// Create sub-menu
-	var menuItems = new gui.Menu();
-
-	menuItems.append(new gui.MenuItem({ label: 'Open', click: openFile }));
-	menuItems.append(new gui.MenuItem({ label: 'Save', click: saveFile }));
-
-
-	if (process.platform === 'darwin') {
-
-		// Load Mac OS X application menu
-		menuBar.createMacBuiltin('Cirrus');
-
-		menuBar.insert(
-		    new gui.MenuItem({
-		        label: 'File',
-		        submenu: menuItems // menu elements from menuItems object
-		    }), 1
-		);
-
-	} else {
-
-		// Load Windows/Linux application menu
-		menuBar.append(
-		    new gui.MenuItem({
-		        label: 'File',
-		        submenu: menuItems // menu elements from menuItems object
-		    }), 1
-		);
-
-	}
-
-	gui.Window.get().menu = menuBar;
-
-}
-
-function openFileDialog (cb) {
-	var inputField = document.querySelector('#fileSelector');
-	inputField.addEventListener('change', function () {
-		var filePath = this.value;
-		currentFile = filePath;
-		cb(filePath);
-	});
-	inputField.click();
+	var menu = Menu.buildFromTemplate(template);
+	Menu.setApplicationMenu(menu);
 }
 
 function bindSelectFileClick (cb) {
 	var button = document.querySelector('#openFileView div');
 	button.addEventListener('click', function () {
-		openFileDialog(cb);
+		openFile(cb);
 	});
 }
 
@@ -107,7 +69,9 @@ function showViewMode (viewMode) {
 	var areaDivs = window.document.querySelectorAll('.area');
 	for (var i=0;i<areaDivs.length;i++) {
 		var areaDiv = areaDivs[i];
-		areaDiv.classList.add('hidden');
+		if (!areaDiv.classList.contains('hidden')) {
+			areaDiv.classList.add('hidden');
+		}
 	}
 	var selectedArea = window.document.querySelector('#' + viewMode + 'Area');
 	selectedArea.classList.remove('hidden');
@@ -124,10 +88,7 @@ function setContent (changedContent) {
 }
 
 function initialize () {
-	bindSelectFileClick(function (filePath) {
-		//loadMenu();
-		ipc.send('readFile', filePath);
-	});
+	bindSelectFileClick(loadMenu);
 }
 
 window.onload = initialize;
