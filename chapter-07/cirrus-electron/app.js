@@ -8,20 +8,25 @@ var ipc     	= electron.ipcRenderer;
 var dialog    = electron.remote.dialog;
 var currentFile;
 var content;
+var tabWas;
 
 ipc.on('fileRead', function (event, err, data) {
+	loadMenu(true);
 	if (err) throw(err);
 	hideSelectFileButton();
+	setContent(data);
 	showViewMode('design');
 });
 
-ipc.on('fileSaved', function (err) {
-	if (err) alert('There was an error saving the file');
+ipc.on('fileSaved', function (event, err) {
+	if (err) return alert('There was an error saving the file');
+	alert('File Saved');
 });
 
 function openFile (cb) {
-	dialog.showOpenDialog(function (filePath) {
-			ipc.send('readFile', filePath);
+	dialog.showOpenDialog(function (files) {
+			ipc.send('readFile', files);
+			if (files) currentFile = files[0];
 			if (cb && typeof cb === 'function') cb();
 	});
 }
@@ -30,7 +35,7 @@ function saveFile () {
 	ipc.send('saveFile', currentFile, content);
 }
 
-function loadMenu () {
+function loadMenu (enableSaveOption) {
 	var template = [
 	  {
 	    label: 'File',
@@ -38,14 +43,17 @@ function loadMenu () {
 	      {
 	        label: 'Open File',
 	        click: openFile
-	      },
-	      {
-	        label: 'Save',
-	        click: saveFile
 	      }
 	    ]
 	  }
 	];
+
+	if (enableSaveOption) {
+		template[0].submenu.push({
+			label: 'Save File',
+			click: saveFile
+		});
+	}
 
 	var menu = Menu.buildFromTemplate(template);
 	Menu.setApplicationMenu(menu);
@@ -65,30 +73,49 @@ function hideSelectFileButton () {
 	appView.classList.remove('hidden');
 }
 
+function hideDiv (div) {
+	if (!div.classList.contains('hidden')) div.classList.add('hidden');
+}
+
 function showViewMode (viewMode) {
-	var areaDivs = window.document.querySelectorAll('.area');
-	for (var i=0;i<areaDivs.length;i++) {
-		var areaDiv = areaDivs[i];
-		if (!areaDiv.classList.contains('hidden')) {
-			areaDiv.classList.add('hidden');
-		}
-	}
-	var selectedArea = window.document.querySelector('#' + viewMode + 'Area');
+	var areaDivs = document.querySelectorAll('.area');
+	areaDivs.forEach(hideDiv);
+	var selectedArea = document.querySelector(`#${viewMode}Area`);
 	selectedArea.classList.remove('hidden');
+	tabWas = viewMode;
 }
 
 function setContent (changedContent) {
 	if (changedContent) { content = changedContent; }
-	var designArea = window.document.querySelector('#designArea');
+	var designArea = document.querySelector('#designArea');
 	designArea.innerHTML = content;
-	var codeArea = window.document.querySelector('#codeArea');
+	var codeArea = document.querySelector('#codeArea');
 	codeArea.value = content;
-	var previewArea = window.document.querySelector('#previewArea');
+	var previewArea = document.querySelector('#previewArea');
 	previewArea.innerHTML = content;
 }
 
+function bindClickingOnTab (tabDiv) {
+	tabDiv.addEventListener('click', function () {
+		var id = tabDiv.id;
+		if (tabWas) {
+			var contentDiv = document.querySelector(`#${tabWas}Area`);
+			if (tabWas === 'design') setContent(contentDiv.innerHTML);
+			if (tabWas === 'code') setContent(contentDiv.value);
+		}
+		showViewMode(id);
+	});
+}
+
+function bindClickingOnTabs() {
+	var tabs = document.querySelectorAll('.tab');
+	tabs.forEach(bindClickingOnTab);
+}
+
 function initialize () {
-	bindSelectFileClick(loadMenu);
+	loadMenu();
+	bindSelectFileClick();
+	bindClickingOnTabs();
 }
 
 window.onload = initialize;

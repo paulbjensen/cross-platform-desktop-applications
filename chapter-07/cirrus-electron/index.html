@@ -11,12 +11,12 @@
 		</div>
 		<div id="appView" class="hidden">
 			<div id="toolbar">
-				<div class="tab" id="design" onclick="showViewMode('design');">Design</div>
-				<div class="tab" id="code" onclick="showViewMode('code');">Code</div>
-				<div class="tab" id="preview" onclick="showViewMode('preview');">Preview</div>
+				<div class="tab" id="design">Design</div>
+				<div class="tab" id="code">Code</div>
+				<div class="tab" id="preview">Preview</div>
 			</div>
-			<div class="area hidden" id="designArea" contenteditable onblur="setContent(this.innerHTML);"></div>
-			<textarea class="area hidden" id="codeArea" onblur="setContent(this.value);"></textarea>
+			<div class="area hidden" id="designArea" contenteditable></div>
+			<textarea class="area hidden" id="codeArea"></textarea>
 			<div class="area hidden" id="previewArea"></div>
 		</div>
   </body>

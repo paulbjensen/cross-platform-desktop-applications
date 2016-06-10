@@ -27,11 +27,12 @@ function readFile (event, files) {
   }
 };
 
-// Handles reading the contents of a file
-ipc.on('readFile', readFile);
-
-ipc.on('saveFile', function (currentFile, content) {
-	fs.writeFile(currentFile, content, function (err) {
+function saveFile (event, currentFile, content) {
+  fs.writeFile(currentFile, content, function (err) {
 		event.sender.send('fileSaved', err);
 	});
-});
+}
+
+// Handles reading the contents of a file
+ipc.on('readFile', readFile);
+ipc.on('saveFile', saveFile);
