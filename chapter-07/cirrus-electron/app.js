@@ -4,11 +4,28 @@
 //
 var electron 	= require('electron');
 var Menu    	= electron.remote.Menu;
+var MenuItem  = electron.remote.MenuItem;
 var ipc     	= electron.ipcRenderer;
 var dialog    = electron.remote.dialog;
 var currentFile;
 var content;
 var tabWas;
+
+
+var addImage = new MenuItem({
+	label: 'Add Image',
+	click: function () {
+
+	}
+})
+
+
+
+var contextMenu = new Menu();
+contextMenu.append(new MenuItem({label: 'Insert image', click() { console.log('item 1 clicked'); }}));
+contextMenu.append(new MenuItem({label: 'Insert video', click() { console.log('item 2 clicked'); }}));
+
+
 
 ipc.on('fileRead', function (event, err, data) {
 	loadMenu(true);
@@ -112,10 +129,19 @@ function bindClickingOnTabs() {
 	tabs.forEach(bindClickingOnTab);
 }
 
+function bindOnDesignView() {
+	document.querySelector('#designArea')
+	  .addEventListener('contextmenu', function (event) {
+		  event.preventDefault();
+		  menu.popup(electron.remote.getCurrentWindow());
+	  });
+}
+
 function initialize () {
 	loadMenu();
 	bindSelectFileClick();
 	bindClickingOnTabs();
+	bindOnDesignView();
 }
 
 window.onload = initialize;

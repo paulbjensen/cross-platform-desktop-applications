@@ -4,11 +4,11 @@
 
 // Dependencies
 //
-var fs 	= require('fs');
-var gui = require('nw.gui');
+var fs 			= require('fs');
+var gui 		= require('nw.gui');
+var designMenu 	= require('./designMenu');
 var currentFile;
 var content;
-
 
 
 function openFile () {
@@ -136,8 +136,8 @@ function initialize () {
 			hideSelectFileButton();
 			showViewMode('design');
 		});
-
 	});
+	designMenu(gui);
 }
 
 
