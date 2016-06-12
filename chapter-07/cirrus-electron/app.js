@@ -11,10 +11,12 @@ var designMenu 	= require('./designMenu');
 var currentFile;
 var content;
 var tabWas;
+var done;
 
 ipc.on('fileRead', function (event, err, data) {
 	loadMenu(true);
 	if (err) throw(err);
+	if (!done) bindClickingOnTabs();
 	hideSelectFileButton();
 	setContent(data);
 	showViewMode('design');
@@ -81,7 +83,10 @@ function hideDiv (div) {
 
 function showViewMode (viewMode) {
 	var areaDivs = document.querySelectorAll('.area');
-	areaDivs.forEach(hideDiv);
+	for (var i; i<areaDivs.length; i++) {
+		var areaDiv = areaDivs[i];
+		hideDiv(areaDiv);
+	};
 	var selectedArea = document.querySelector(`#${viewMode}Area`);
 	selectedArea.classList.remove('hidden');
 	tabWas = viewMode;
@@ -111,17 +116,20 @@ function bindClickingOnTab (tabDiv) {
 
 function bindClickingOnTabs() {
 	var tabs = document.querySelectorAll('.tab');
-	tabs.forEach(bindClickingOnTab);
+	done = true;
+	for (var i; i<tabs.length; i++) {
+		var tab = tabs[i];
+		bindClickingOnTab(tab);
+	}
 }
 
 function bindOnDesignView() {
-	designMenu(Menu, MenuItem);
+	designMenu();
 }
 
 function initialize () {
 	loadMenu();
 	bindSelectFileClick();
-	bindClickingOnTabs();
 	bindOnDesignView();
 }
 

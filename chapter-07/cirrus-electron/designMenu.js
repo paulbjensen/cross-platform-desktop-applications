@@ -1,6 +1,10 @@
 'use strict';
 
 
+var electron = require('electron');
+var Menu    		= electron.remote.Menu;
+var MenuItem  	= electron.remote.MenuItem;
+
 
 // Used to store the coordinates where
 // the context menu was clicked
@@ -55,7 +59,9 @@ function parseYoutubeVideo (youtubeURL) {
 
 
 function insertVideo () {
-	var youtubeURL = window.prompt('Please insert a YouTube url');
+	// NOTE - Prompt is not supported in Electron
+	// TODO - Replace prompt
+	var youtubeURL = prompt('Please insert a YouTube url');
 	if (youtubeURL) {
 		var videoId = parseYoutubeVideo(youtubeURL);
 		if (videoId) {
@@ -72,11 +78,11 @@ function insertVideo () {
 
 
 
-function initialize (Menu, MenuItem) {
- 	var menu = Menu();
+function initialize () {
+ 	var menu = new Menu();
 
-	menu.append(new MenuItem({icon: 'picture.png', label: 'Insert image', click: insertImage }));
-	menu.append(new MenuItem({icon: 'youtube.png', label: 'Insert video', click: insertVideo }));
+	menu.append(new MenuItem({label: 'Insert image', click: insertImage }));
+	menu.append(new MenuItem({label: 'Insert video', click: insertVideo }));
 
 	document.querySelector('#designArea')
 	.addEventListener('contextmenu', function (event) {
