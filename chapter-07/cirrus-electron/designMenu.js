@@ -5,7 +5,7 @@
 // Used to store the coordinates where
 // the context menu was clicked
 var x,y;
-var document;
+
 
 
 function insertContent (content) {
@@ -55,7 +55,7 @@ function parseYoutubeVideo (youtubeURL) {
 
 
 function insertVideo () {
-	var youtubeURL = prompt('Please insert a YouTube url');
+	var youtubeURL = window.prompt('Please insert a YouTube url');
 	if (youtubeURL) {
 		var videoId = parseYoutubeVideo(youtubeURL);
 		if (videoId) {
@@ -72,14 +72,11 @@ function insertVideo () {
 
 
 
-function initialize (window, gui) {
+function initialize (Menu, MenuItem) {
+ 	var menu = Menu();
 
-	if (!document) document = window.document;
-
- 	var menu = new gui.Menu();
-
-	menu.append(new gui.MenuItem({icon: 'picture.png', label: 'Insert image', click: insertImage }));
-	menu.append(new gui.MenuItem({icon: 'youtube.png', label: 'Insert video', click: insertVideo }));
+	menu.append(new MenuItem({icon: 'picture.png', label: 'Insert image', click: insertImage }));
+	menu.append(new MenuItem({icon: 'youtube.png', label: 'Insert video', click: insertVideo }));
 
 	document.querySelector('#designArea')
 	.addEventListener('contextmenu', function (event) {

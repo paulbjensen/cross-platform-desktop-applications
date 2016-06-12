@@ -81,7 +81,7 @@ function openFileDialog (cb) {
 		currentFile = filePath;
 		cb(filePath);
 	});
-	inputField.click();	
+	inputField.click();
 }
 
 
@@ -126,8 +126,6 @@ function setContent (changedContent) {
 	previewArea.innerHTML = content;
 }
 
-
-
 function initialize () {
 	bindSelectFileClick(function (filePath) {
 		loadMenu();
@@ -137,7 +135,7 @@ function initialize () {
 			showViewMode('design');
 		});
 	});
-	designMenu(gui);
+	designMenu(window, gui);
 }
 
 
