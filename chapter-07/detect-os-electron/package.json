@@ -1,0 +1,11 @@
+{
+  "name": "detect-os",
+  "version": "1.0.0",
+  "main": "main.js",
+  "dependencies": {
+    "electron-prebuilt": "^1.2.2"
+  },
+  "scripts": {
+    "start": "node_modules/.bin/electron ."
+  }
+}

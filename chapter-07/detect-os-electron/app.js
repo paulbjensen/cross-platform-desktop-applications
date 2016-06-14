@@ -1,8 +1,5 @@
 'use strict';
 
-var os 		= require('os');
-var platform 	= os.platform();
-
 
 function addStylesheet (stylesheet) {
   var head = document.getElementsByTagName('head')[0];
@@ -17,6 +14,9 @@ function labelOS (osName) {
 }
 
 function initialize () {
+  var os 		= require('os');
+  var platform 	= os.platform();
+
   switch (platform) {
   	case 'darwin':
   	  addStylesheet('mac');
