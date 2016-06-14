@@ -1,0 +1,59 @@
+body {
+	padding: 0px;
+	margin: 0px;
+	background: #ddd;
+	color: #888;
+	font-family: 'Helvetica Neue', 'Arial';
+}
+
+#load-icon-holder {
+	padding-top: 10px;
+	text-align: center;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	right: 0px;
+	width: 100%;
+}
+
+#icons {
+	display: none;
+}
+
+.icon-holder {
+	float: left;
+	margin: 1em;
+	padding: 5px;
+	border: solid 1px #bbb;
+	border-radius: 3px;
+}
+
+.sixteen {
+	width: 16px;
+	height: 16px;
+}
+
+.thirtytwo {
+	width: 32px;
+	height: 32px;
+}
+
+.sixtyfour {
+	width: 64px;
+	height: 64px;
+}
+
+.onetwoeight {
+	width: 128px;
+	height: 128px;
+}
+
+.twofivesix {
+	width: 256px;
+	height: 256px;
+}
+
+#save {
+	margin-top: 1em;
+	float: left;
+}
