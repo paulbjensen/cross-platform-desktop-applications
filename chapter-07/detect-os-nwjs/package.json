@@ -1,0 +1,11 @@
+{
+  "name": "detect-os",
+  "version": "1.0.0",
+  "main": "index.html",
+  "scripts": {
+    "start": "node_modules/.bin/nw ."
+  },
+  "dependencies": {
+    "nw": "^0.15.2"
+  }
+}
