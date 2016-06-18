@@ -1,6 +1,8 @@
 # Hello World (Electron)
 
-A Hello World desktop app, built with Electron for [Cross Platform Desktop Applications](http://manning.com/books/cross-platform-desktop-applications)
+A Hello World desktop app, built with Electron for [Cross Platform Desktop Applications](https://manning.com/books/cross-platform-desktop-applications).
+
+![https://raw.githubusercontent.com/paulbjensen/cross-platform-desktop-applications/master/app-screenshots/chapter-01/hello-world-electron-mac-os-x.png](Hello World Electron Mac OS X)
 
 ### Dependencies
 
@@ -23,8 +25,8 @@ npm start
 
 ### About this application
 
-This application was created for [Cross Platform Desktop Applications](http://manning.com/books/cross-platform-desktop-applications)
+This application was created for [Cross Platform Desktop Applications](https://manning.com/books/cross-platform-desktop-applications).
 
 ### Licence and Credits
 
-&copy;2016 Paul Jensen. The app source code is licensed under the MIT License.
+&copy; 2016 Paul Jensen. The app source code is licensed under the MIT License.
