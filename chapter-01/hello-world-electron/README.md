@@ -2,7 +2,7 @@
 
 A Hello World desktop app, built with Electron for [Cross Platform Desktop Applications](https://manning.com/books/cross-platform-desktop-applications).
 
-![https://raw.githubusercontent.com/paulbjensen/cross-platform-desktop-applications/master/app-screenshots/chapter-01/hello-world-electron-mac-os-x.png](Hello World Electron Mac OS X)
+![Hello World Electron Mac OS X](https://raw.githubusercontent.com/paulbjensen/cross-platform-desktop-applications/master/app-screenshots/chapter-01/hello-world-electron-mac-os-x.png)
 
 ### Dependencies
 
