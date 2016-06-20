@@ -1,0 +1,23 @@
+{
+  "eqeqeq": true,
+  "indent": 4,
+  "node": true,
+  "predef": [
+    "__dirname",
+    "after",
+    "afterEach",
+    "before",
+    "beforeEach",
+    "console",
+    "describe",
+    "it",
+    "module",
+    "process",
+    "require",
+    "setInterval"
+  ],
+  "strict": true,
+  "trailing": true,
+  "undef": true,
+  "unused": true
+}
