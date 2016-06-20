@@ -1,6 +1,8 @@
 {
-  "name" : "hello-world",
-  "main" : "index.html",
-  "version" : "1.0"
+  "name": "hello-world",
+  "main": "index.html",
+  "version": "1.0.0",
+  "dependencies": {
+    "nw": "^0.15.3"
+  }
 }
-
