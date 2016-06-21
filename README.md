@@ -10,7 +10,7 @@ This is a repository containing applications and code samples from the book [Cro
 
 ### Installing the code examples
 
-    git clone XXX
+    git clone git@github.com:paulbjensen/cross-platform-desktop-applications.git
     cd cross-platform-desktop-applications
     
 ### Browsing the examples
@@ -20,3 +20,7 @@ The apps and code samples are organised in folders that match the chapter that t
 ### Troubleshooting
 
 If you run into any issues running the applications, please create an issue on this Github repository and I will take a look.
+
+### License and Credits
+
+&copy; 2016 Paul Jensen. All source code is licensed under the MIT License.
