@@ -4,26 +4,31 @@
 //
 let fs = require('fs');
 let photoData;
+let saveFile;
+let video;
+
+// http://electron.atom.io/docs/api/dialog/#dialogshowsavedialogbrowserwindow-options-callback
+//
+// This is what will need to be implemented
 
 function bindSavingPhoto () {
-  let saveFile = window.document.querySelector('#saveFile');
-  saveFile.addEventListener('change', function () {
+  saveFile.addEventListener('change', () => {
     let filePath = this.value;
-    fs.writeFile(filePath, photoData, 'base64', function (err) {
-      if (err) alert('There was a problem saving the photo:', err.message);
+    fs.writeFile(filePath, photoData, 'base64', (err) => {
+      if (err) alert(`There was a problem saving the photo: ${err.message}`);
       photoData = null;
     });
   });
 }
 
 function initialize () {
-
-  let errorCallback = function (error) {
-    console.log('There was an error connecting to the video stream:', error);
+  saveFile = window.document.querySelector('#saveFile');
+  video = window.document.querySelector('video');
+  let errorCallback = (error) => {
+    console.log(`There was an error connecting to the video stream: ${error.message}`);
   };
 
-  window.navigator.webkitGetUserMedia({video: true}, function (localMediaStream) {
-    let video = window.document.querySelector('video');
+  window.navigator.webkitGetUserMedia({video: true}, (localMediaStream) => {
     video.src = window.URL.createObjectURL(localMediaStream);
     video.onloadedmetadata = bindSavingPhoto;
   }, errorCallback);
@@ -31,10 +36,8 @@ function initialize () {
 }
 
 function takePhoto () {
-  let saveFile  = window.document.querySelector('#saveFile');
-  let canvas    = window.document.querySelector('canvas');
-  let video     = window.document.querySelector('video');
-  canvas.getContext('2d').drawImage(video, 0, 0, video.videoWidth/2, video.videoHeight/2);
+  let canvas = window.document.querySelector('canvas');
+  canvas.getContext('2d').drawImage(video, 0, 0, 800, 600);
   photoData = canvas.toDataURL('image/png').replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
   saveFile.click();
 }

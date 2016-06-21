@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "main": "index.html",
   "window": {
-    "toolbar": false
+    "toolbar": false,
+    "width": 800,
+    "height": 600,
+    "resizable": false,
+    "fullscreen": false
   },
   "dependencies": {
     "nw": "^0.15.2"

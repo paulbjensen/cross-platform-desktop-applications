@@ -3,8 +3,7 @@
 const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
-const Remote = electron.Remote;
-const Dialog = Remote.Dialog;
+const dialog = electron.dialog;
 
 let mainWindow = null;
 

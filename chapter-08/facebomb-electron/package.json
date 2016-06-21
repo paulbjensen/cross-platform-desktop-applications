@@ -4,11 +4,15 @@
   "description": "An app for selfies",
   "main": "main.js",
   "scripts": {
+    "start": "node_modules/.bin/electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "Electron"
   ],
   "author": "Paul Jensen <paulbjensen@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "electron-prebuilt": "^1.2.3"
+  }
 }
