@@ -3,7 +3,6 @@
 const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
-const dialog = electron.dialog;
 
 let mainWindow = null;
 
@@ -12,8 +11,12 @@ app.on('window-all-closed', () => {
 });
 
 app.on('ready', () => {
-  mainWindow = new BrowserWindow();
+  mainWindow = new BrowserWindow({
+    width: 816,
+    height: 659,
+    resizable: false,
+    fullscreen: false
+  });
   mainWindow.loadURL(`file://${__dirname}/index.html`);
   mainWindow.on('closed', () => { mainWindow = null; });
-  //mainWindow.webContents.openDevTools();
 });

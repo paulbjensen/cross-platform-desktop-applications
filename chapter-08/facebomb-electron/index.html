@@ -1,13 +1,15 @@
 <html>
   <head>
     <title>Facebomb</title>
-    <link rel="stylesheet" href="app.css">
+    <link href="app.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/font-awesome.min.css">
     <script src="app.js"></script>
   </head>
   <body>
-    <input type="file" nwsaveas="myfacebomb.png" id="saveFile" />
-  	<canvas width="800" height="600"></canvas>
-  	<video autoplay></video>
-  	<div id="takePhoto" onclick="takePhoto()">Take Photo</div>
+	  <canvas width="800" height="600"></canvas>
+	  <video autoplay></video>
+	  <div id="takePhoto" onclick="takePhoto()">
+      <i class="fa fa-camera" aria-hidden="true"></i>
+    </div>
   </body>
 </html>
