@@ -1,7 +1,5 @@
 'use strict';
 
-// Dependencies
-//
 const fs = require('fs');
 let photoData;
 let saveFile;
