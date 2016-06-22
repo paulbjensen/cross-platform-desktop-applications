@@ -1,32 +1,32 @@
 # Facebomb (Electron)
 
-A desktop application for taking selfies with your webcam.
+An app for taking desktop selfies, built with Electron for [Cross Platform Desktop Applications](https://manning.com/books/cross-platform-desktop-applications).
+
+![Facebomb Electron Windows 10](https://raw.githubusercontent.com/paulbjensen/cross-platform-desktop-applications/master/app-screenshots/chapter-08/facebomb-electron-windows.png)
 
 ### Dependencies
 
-- Node.js
-- Electron
+- Node.js (4.x and above)
+- Electron (1.2.1 and above)
 
 ### Installation
 
-Clone the repository and run the following instructions from the command line:
-
 ```
-cd PATH_TO_APP
+cd PATH_TO_THIS_APP
 npm install
 ```
 
 ### Starting the app
 
 ```
-cd PATH_TO_APP
+cd PATH_TO_THIS_APP
 npm start
 ```
 
-### About the app
+### About this application
 
-The application was created to demonstrate how to use the HTML5 media capture API within a desktop application for Chapter 8 in [Cross Platform Desktop Applications](http://manning.com/books/cross-platform-desktop-applications).
+This application was created for [Cross Platform Desktop Applications](https://manning.com/books/cross-platform-desktop-applications).
 
-### Credits
+### Licence and Credits
 
-&copy; 2016 Paul Jensen. The app is licensed under the MIT license.
+&copy; 2016 Paul Jensen. The app source code is licensed under the MIT License.

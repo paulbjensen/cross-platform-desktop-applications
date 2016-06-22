@@ -2,7 +2,7 @@
 
 An app for taking desktop selfies, built with NW.js for [Cross Platform Desktop Applications](https://manning.com/books/cross-platform-desktop-applications).
 
-![Hello World NW.js Mac OS X](https://raw.githubusercontent.com/paulbjensen/cross-platform-desktop-applications/master/app-screenshots/chapter-08/facebomb-nwjs-windows.png)
+![Facebomb NW.js Windows 10](https://raw.githubusercontent.com/paulbjensen/cross-platform-desktop-applications/master/app-screenshots/chapter-08/facebomb-nwjs-windows.png)
 
 ### Dependencies
 
