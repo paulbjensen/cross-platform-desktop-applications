@@ -7,7 +7,7 @@ A simple post-it note app, built with Electron for [Cross Platform Desktop Appli
 ### Dependencies
 
 - Node.js (4.x and above)
-- NW.js (0.15.x and above)
+- Electron (1.2.x and above)
 
 ### Installation
 
