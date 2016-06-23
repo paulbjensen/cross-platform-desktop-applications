@@ -1,0 +1,25 @@
+body {
+	background: #ffe15f;
+	color: #694921;
+	padding: 1em;
+}
+
+textarea {
+	font-family: 'Hannotate SC', 'Hanzipen SC','Comic Sans', 'Comic Sans MS';
+	outline: none;
+	font-size: 18pt;
+	border: none;
+	width: 100%;
+	height: 100%;
+	background: none;
+}
+
+#close {
+	cursor: pointer;
+	position: absolute;
+	top: 8px;
+	right: 10px;
+	text-align: center;
+	font-family: 'Helvetica Neue', 'Arial';
+	font-weight: 400;
+}

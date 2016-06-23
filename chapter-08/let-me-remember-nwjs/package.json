@@ -1,0 +1,17 @@
+{
+  "name": "let-me-remember",
+  "version": "1.0.0",
+  "main": "index.html",
+  "window": {
+    "width": 480,
+    "height": 320,
+    "frame": false,
+    "toolbar": false
+  },
+  "scripts": {
+    "start": "node_modules/.bin/nw ."
+  },
+  "dependencies": {
+    "nw": "^0.15.3"
+  }
+}
