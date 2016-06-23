@@ -1,8 +1,8 @@
-# Facebomb (NW.js)
+# Let Me Remember (NW.js)
 
 A simple post-it note app, built with NW.js for [Cross Platform Desktop Applications](https://manning.com/books/cross-platform-desktop-applications).
 
-![Let me remembers NW.js Windows 10](https://raw.githubusercontent.com/paulbjensen/cross-platform-desktop-applications/master/app-screenshots/chapter-08/let-me-remember-nwjs-windows.png)
+![Let me remember NW.js Windows 10](https://raw.githubusercontent.com/paulbjensen/cross-platform-desktop-applications/master/app-screenshots/chapter-08/let-me-remember-nwjs-windows.png)
 
 ### Dependencies
 
