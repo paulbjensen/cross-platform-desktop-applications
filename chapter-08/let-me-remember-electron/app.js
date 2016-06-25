@@ -14,8 +14,6 @@ function saveNotes () {
 	window.localStorage.setItem('notes',notes);
 }
 
-function quit () {
-  app.quit();
-}
+function quit () { app.quit(); }
 
 window.onload = initialize;
