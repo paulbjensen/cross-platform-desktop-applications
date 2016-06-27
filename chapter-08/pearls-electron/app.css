@@ -1,0 +1,28 @@
+body {
+	padding: 0;
+	margin: 0;
+	background: #001203;
+}
+
+#phrases {
+	padding: 0.5em;
+}
+
+.phrase {
+	float: left;
+	padding: 1em;
+	margin: 1em;
+	border-radius: 12px;
+	border: solid 1px #ccc;
+	font-family: 'Helvetica Neue', 'Arial' 'Sans-Serif';
+	font-style: italic;
+	width: 9em;
+	min-height: 7em;
+	text-align: center;
+	color: #fff;
+}
+
+.phrase:hover {
+	cursor: pointer;
+	background: #1188de;
+}

@@ -1,12 +1,12 @@
 {
-	"name":"pearls",
-	"version":"1.0.0",
-	"main":"index.html",
-	"window": {
-		"width": 650,
-		"height": 550,
-		"toolbar": false
-	},
+  "name":"pearls",
+  "version":"1.0.0",
+  "main":"index.html",
+  "window": {
+    "width": 650,
+    "height": 550,
+    "toolbar": false
+  },
   "scripts": {
     "start": "node_modules/.bin/nw ."
   },

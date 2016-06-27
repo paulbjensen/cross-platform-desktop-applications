@@ -1,7 +1,7 @@
 'use strict';
 
-const gui = require('nw.gui');
-const clipboard = gui.Clipboard.get();
+const electron = require('electron');
+const clipboard = electron.clipboard;
 const phrases = require('./phrases');
 let phrasesArea;
 let template;
@@ -19,7 +19,7 @@ function loadPhrasesIntoApp () {
 }
 
 function copyPhraseToClipboard (phrase) {
-  clipboard.set(phrase, 'text');
+  clipboard.writeText(phrase, 'selection');
 }
 
 window.onload = loadPhrasesIntoApp;
