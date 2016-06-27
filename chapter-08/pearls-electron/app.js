@@ -19,7 +19,7 @@ function loadPhrasesIntoApp () {
 }
 
 function copyPhraseToClipboard (phrase) {
-  clipboard.writeText(phrase, 'selection');
+  clipboard.writeText(phrase);
 }
 
 window.onload = loadPhrasesIntoApp;
