@@ -1,0 +1,24 @@
+{
+  "name": "snake-nwjs",
+  "version": "1.0.0",
+  "description": "A Snake game in NW.js for 'Cross Platform Desktop Applications'",
+  "main": "index.html",
+  "scripts": {
+    "start": "node_modules/.bin/nw .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "snake",
+    "nwjs"
+  ],
+  "author": "Paul Jensen <paulbjensen@gmail.com>",
+  "license": "MIT",
+  "window": {
+    "width": 840,
+    "height": 470,
+    "toolbar": false
+  },
+  "dependencies": {
+    "nw": "^0.15.3"
+  }
+}
