@@ -1,8 +1,6 @@
 'use strict';
 
-const electron = require('electron');
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
+const {app, globalShortcut, BrowserWindow} = require('electron');
 
 let mainWindow = null;
 
@@ -18,4 +16,12 @@ app.on('ready', () => {
   });
   mainWindow.loadURL(`file://${__dirname}/index.html`);
   mainWindow.on('closed', () => { mainWindow = null; });
+  const pauseKey = globalShortcut.register('CommandOrControl+P', () => {
+    mainWindow.webContents.send('togglePauseState');
+  });
+  if (!pauseKey) alert('You will not be able to pause the game from the keyboard');
+});
+
+app.on('will-quit', () => {
+  globalShortcut.unregister('CommandOrControl+P');
 });

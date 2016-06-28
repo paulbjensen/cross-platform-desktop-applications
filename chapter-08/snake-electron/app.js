@@ -1,5 +1,7 @@
 'use strict';
 
+const {ipcRenderer} = require('electron');
+
 let currentState;
 let canvas, ctx, gridSize, currentPosition, snakeBody, snakeLength, direction, score, suggestedPoint, allowPressKeys, interval, choice;
 
@@ -18,21 +20,7 @@ function togglePauseState () {
 	}
 }
 
-// TODO - this is the bit of code to update in terms of keyboard shortcuts
-// var pauseKeyOptions = {
-//   key:'Ctrl+P',
-//   active: togglePauseState,
-//   failed: function () {
-//     console.log('An error occurred');
-//   }
-// };
-//
-// var pauseShortcut = new gui.Shortcut(pauseKeyOptions);
-// gui.App.registerGlobalHotKey(pauseShortcut);
-// process.on('exit', function () {
-//   gui.App.unregisterGlobalHotKey(pauseShortcut);
-// });
-
+ipcRenderer.on('togglePauseState', togglePauseState);
 
 function updateScore () {
   score = (snakeLength - 3) * 10;
