@@ -1,0 +1,17 @@
+body {
+  margin: 1em;
+  padding: 0;
+  background: #111;
+  color: white;
+  font-family: helvetica;
+}
+
+canvas {
+  border: solid 1px red;
+  width: 800px;
+  height: 400px;
+}
+
+#scoreboard {
+  padding-bottom: 1em;
+}
