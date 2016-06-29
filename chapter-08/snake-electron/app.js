@@ -1,9 +1,9 @@
 'use strict';
 
-const {ipcRenderer} = require('electron');
-
 let currentState;
 let canvas, ctx, gridSize, currentPosition, snakeBody, snakeLength, direction, score, suggestedPoint, allowPressKeys, interval, choice;
+
+const {ipcRenderer} = require('electron');
 
 function togglePauseState () {
 	if (currentState) {

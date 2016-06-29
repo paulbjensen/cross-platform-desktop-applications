@@ -1,0 +1,23 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Helvetica Neue', 'Arial';
+	background: #55acee;
+}
+
+input, button {
+  padding: 1em;
+  font-size: 12pt;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+button {
+	background: linear-gradient(0deg, #bbb, #fff) ;
+	cursor: pointer;
+}
+
+form {
+	margin: 1em;
+}

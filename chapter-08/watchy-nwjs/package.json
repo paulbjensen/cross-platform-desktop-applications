@@ -1,0 +1,25 @@
+{
+  "name": "watchy-nwjs",
+  "version": "1.0.0",
+  "description": "A Twitter client for monitoring topics, built with NW.js for the book 'Cross Platform Desktop Applications'",
+  "main": "index.html",
+  "scripts": {
+    "start": "node_modules/.bin/nw .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "twitter",
+    "nwjs"
+  ],
+  "window": {
+    "toolbar": true,
+    "width": 370,
+    "height": 80
+  },
+  "author": "Paul Jensen <paulbjensen@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "nw": "^0.15.3",
+    "twitter": "^1.3.0"
+  }
+}
