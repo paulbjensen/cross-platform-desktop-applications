@@ -5,20 +5,22 @@ var config	= require('./config');
 var term;
 var client = new Twitter(config);
 
-var notify = chrome.notifications.create;
+var notify = Notification;//chrome.notifications.create;
 
 function notifyOfTweet (tweet) {
-	notify({
-		icon: tweet.user.profile_image_url,
-		body: tweet.text
-	});
+	new notify(
+		'New tweet about ' + term,
+		{
+			body: tweet.text,
+			icon: tweet.user.profile_image_url
+		}
+	);
 }
 
 function search () {
 	var formInput = window.document.querySelector('form input');
 	term = formInput.value;
 	client.stream('statuses/filter', {track: term}, function (stream) {
-		alert('Subscribed to stream');
 	  stream.on('data', notifyOfTweet);
 		stream.on('error', function (error) {
 		  alert(error.message);
