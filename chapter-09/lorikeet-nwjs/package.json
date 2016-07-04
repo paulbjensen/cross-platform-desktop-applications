@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "async": "^2.0.0-rc.2",
+    "chromedriver": "^2.21.2",
     "lunr": "^0.7.0",
     "osenv": "^0.1.3"
   },
