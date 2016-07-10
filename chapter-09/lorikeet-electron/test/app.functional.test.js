@@ -11,12 +11,13 @@ describe('doing something for the app', () => {
 
   before(() => {
 		app = new Application({
-		  path: path.join(__dirname, '../node_modules/.bin/electron'),
+		  path: path.join(__dirname, '../node_modules/.bin/electron.cmd'),
 			args: [path.join(__dirname, '../main.js')]
 		});
 	});
 
-	it('should check that the app works as expected', (done) => {
+	it('should check that the app works as expected', function (done) {
+    this.timeout(10000);
 		app.start().then(function () {
 		  return app.browserWindow.isVisible();
 		}).then(function (isVisible) {
@@ -26,10 +27,9 @@ describe('doing something for the app', () => {
 		}).then(function (title) {
 		  assert.equal(title, 'My App');
 		}).then(function () {
-		  return app.stop();
-		}).catch(function (error) {
-		  console.error('Test failed', error.message);
-		}).then(done);
+		  app.stop();
+      return done();
+		}).catch(done);
 	});
 
 });
