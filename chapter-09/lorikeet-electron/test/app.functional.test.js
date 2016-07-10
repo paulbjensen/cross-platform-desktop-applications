@@ -5,13 +5,15 @@ var assert = require('assert');
 var path = require('path');
 
 var app;
-
+let electronPath = '../node_modules/.bin/electron';
+if (process.platform === 'win32') electronPath += '.cmd';
 
 describe('doing something for the app', () => {
 
+
   before(() => {
 		app = new Application({
-		  path: path.join(__dirname, '../node_modules/.bin/electron.cmd'),
+		  path: path.join(__dirname, electronPath),
 			args: [path.join(__dirname, '../main.js')]
 		});
 	});
@@ -29,7 +31,10 @@ describe('doing something for the app', () => {
 		}).then(function () {
 		  app.stop();
       return done();
-		}).catch(done);
+		}).catch(function () {
+			app.stop();
+			return done()
+		});
 	});
 
 });
