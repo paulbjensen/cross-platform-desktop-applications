@@ -3,6 +3,7 @@
 var Application = require('spectron').Application;
 var assert = require('assert');
 var path = require('path');
+var osenv = require('osenv');
 
 var app;
 let electronPath = path.join(__dirname, '../node_modules/.bin/electron');
@@ -25,25 +26,20 @@ describe('exploring folders', () => {
 			return done(error);
 		}
 
+    let documentsFilePath = path.join(osenv.home(),'/Documents');
+
     this.timeout(10000);
 		app.start().then(() => {
 		  return app.browserWindow.isVisible();
 		}).then((isVisible) => {
 		  assert.equal(isVisible, true);
 		}).then(() => {
-		  return app.client.getTitle();
-		}).then((title) => {
-		  assert.equal(title, 'Lorikeet');
-		})
-		.then(() => {
-			return app.client.doubleClick('//div[contains(text(),"Documents")]')
-		})
-		.then((result) => {
-			setTimeout(function () {
-				console.log(result);
-				return null;
-			}, 3000);
-		})
+			return app.client.doubleClick(`//img[@data-filepath="${documentsFilePath}"]`);
+  	}).then(() => {
+      return app.client.getText('#current-folder');
+    }).then((currentFolder) => {
+      assert.equal(documentsFilePath, currentFolder);
+    })
 		.then(finish)
 		.catch(finish);
 	});
