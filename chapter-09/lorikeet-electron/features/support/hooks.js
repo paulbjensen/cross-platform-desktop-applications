@@ -9,8 +9,7 @@ if (process.platform === 'win32') electronPath += '.cmd';
 var hooks = function () {
 
 	this.Before(function (scenario, callback) {
-    var self = this;
-    self.app = new Application({
+    this.app = new Application({
       path: electronPath,
       args: [entryPointPath]
     });
@@ -18,9 +17,8 @@ var hooks = function () {
   });
 
 	this.After(function (scenario, callback) {
-		var self = this;
-		self.app.stop();
-		callback();
+		this.app.stop();
+    callback();
 	});
 
 };
