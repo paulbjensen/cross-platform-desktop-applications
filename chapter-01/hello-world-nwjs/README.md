@@ -6,20 +6,20 @@ A Hello World desktop app, built with NW.js for [Cross Platform Desktop Applicat
 
 ### Dependencies
 
-- Node.js (4.x and above)
-- NW.js (0.15.x and above)
+- Node.js (6.x and above)
+- NW.js (0.16.x and above)
 
 ### Installation
 
 ```
-cd PATH_TO_THIS_APP
+cd hello-world-nwjs
 npm install
 ```
 
 ### Starting the app
 
 ```
-cd PATH_TO_THIS_APP
+cd hello-world-nwjs
 npm start
 ```
 
