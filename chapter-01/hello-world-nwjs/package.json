@@ -3,6 +3,9 @@
   "main": "index.html",
   "version": "1.0.0",
   "dependencies": {
-    "nw": "^0.15.3"
+    "nw": "^0.16.1"
+  }, 
+  "scripts": {
+    "start": "node_modules/.bin/nw ."
   }
 }
