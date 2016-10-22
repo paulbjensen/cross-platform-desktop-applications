@@ -21,10 +21,12 @@ describe('app', () => {
           wm.start({closeOnStdinInput: true}, (err) => {
             if (err) return done(err);
             browser = wd.remote();
+						let nwPath = path.join(__dirname, '../node_modules/.bin/nw');
+						if (require('os').platform() === 'win32') { nwPath += '.cmd'; }
             browser.init({
               browserName: 'chrome',
               chromeOptions: {
-                binary: path.join(__dirname, '../node_modules/.bin/nw.cmd')
+                binary: nwPath
               }
             });
           });
