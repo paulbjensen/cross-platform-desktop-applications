@@ -1,6 +1,6 @@
 {
   "name": "hello-world",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "main": "main.js",
   "build": {
     "iconUrl": "https://github.com/paulbjensen/lorikeet/raw/master/icon.ico",
