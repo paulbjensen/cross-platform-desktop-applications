@@ -1,0 +1,16 @@
+{
+	"name":"todo-mvc-app",
+	"version":"1.0.0",
+	"main":"index.html",
+	"window": {
+		"toolbar":false
+	},
+  "private": true,
+  "dependencies": {
+    "classnames": "^2.1.5",
+    "director": "^1.2.0",
+    "react": "^0.13.3",
+    "todomvc-app-css": "^2.0.0",
+    "todomvc-common": "^1.0.1"
+  }
+}

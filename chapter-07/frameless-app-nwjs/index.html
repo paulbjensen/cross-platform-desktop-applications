@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>Transparent NW.js app - you won't see this title</title>
+    <style rel="stylesheet">
+      html {
+        border-radius: 25px;
+        -webkit-app-region: drag;
+       }
+
+      body {
+        background: #333;
+        color: white;
+        font-family: 'Signika';
+      }
+
+      p {
+        padding: 1em;
+        text-align: center;
+        text-shadow: 1px 1px 1px rgba(0,0,0,0.25);
+      }
+
+       button, select {
+         -webkit-app-region: no-drag;
+       }
+
+       p, img {
+         -webkit-user-select: all;
+         -webkit-app-region: no-drag;
+       }
+
+    </style>
+  </head>
+  <body>
+    <p>Frameless app example</p>
+  </body>
+</html>

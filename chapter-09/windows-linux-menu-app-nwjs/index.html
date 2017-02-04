@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <title>Windows/Linux menu app example for NW.js</title>
+		<script>
+      'use strict';
+
+      const gui       = require('nw.gui');
+      const menuBar   = new gui.Menu({type:'menubar'});
+      const fileMenu  = new gui.MenuItem({label: 'File'});
+
+			const sayHelloMenuItem = new gui.MenuItem(
+			  {
+			    label: 'Say hello',
+			    click: () => { alert('Hello'); }
+			  }
+			);
+
+			const quitAppMenuItem = new gui.MenuItem(
+			  {
+			    label: 'Quit the app',
+			    click: () => { process.exit(0); }
+			  }
+			);
+
+      const fileMenuSubMenu = new gui.Menu();
+      fileMenuSubMenu.append(sayHelloMenuItem);
+      fileMenuSubMenu.append(quitAppMenuItem);
+
+      fileMenu.submenu = fileMenuSubMenu;
+
+      menuBar.append(fileMenu);
+      gui.Window.get().menu = menuBar;
+    </script>
+  </head>
+  <body>
+    <h1>Windows/Linux menu example</h1>
+  </body>
+</html>

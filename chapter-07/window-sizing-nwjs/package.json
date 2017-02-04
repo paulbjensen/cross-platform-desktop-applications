@@ -1,0 +1,10 @@
+{
+  "name" : "window-sizing-nwjs",
+  "version" : "1.0.0",
+  "main" : "index.html",
+  "window" : {
+     "width" : 300,
+     "height" : 200
+  }
+}
+

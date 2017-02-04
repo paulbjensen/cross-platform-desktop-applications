@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <title>Tray app example</title>
+		<link href="app.css" rel="stylesheet">
+    <script>
+			'use strict';
+			const notes = [
+			  {
+			    title: 'todo list',
+			    contents: 'grocery shopping\npick up kids\nsend birthday party invites'},
+			  {
+			    title: 'grocery list',
+			    contents: 'Milk\nEggs\nButter\nDouble Cream'},
+			  {
+			    title: 'birthday invites',
+			    contents: 'Dave\nSue\nSally\nJohn and Joanna\nChris and Georgina\nElliot'
+			  }
+			];
+
+			function displayNote (note) {
+		    document.getElementById('title').innerText = note.title;
+		    document.getElementById('contents').innerText = note.contents;
+		  }
+
+      const gui = require('nw.gui');
+      const tray = new gui.Tray({icon: 'icon@2x.png'});
+			const menu = new gui.Menu();
+
+			function appendNoteToMenu (note) {
+			  const menuItem = new gui.MenuItem({
+			    label: note.title,
+			    click: () => { displayNote(note); }
+			  });
+			  menu.append(menuItem);
+			}
+
+			notes.map(appendNoteToMenu);
+
+			document.addEventListener('DOMContentLoaded', () => {
+			  displayNote(notes[0]);
+			});
+
+			tray.menu = menu;
+    </script>
+  </head>
+  <body>
+		<h1 id="title"></h1>
+    <div id="contents"></div>
+  </body>
+</html>

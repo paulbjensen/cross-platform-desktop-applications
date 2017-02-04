@@ -1,0 +1,11 @@
+{
+	"name" : "frameless-transparent-app-nwjs",
+	"version" : "1.0.0",
+	"main" : "index.html",
+	"window" : {
+	  "frame" : false,
+	  "transparent": true,
+	  "width": 300,
+	  "height": 150
+	}
+}

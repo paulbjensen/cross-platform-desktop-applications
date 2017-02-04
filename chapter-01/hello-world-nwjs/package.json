@@ -1,11 +1,5 @@
 {
-  "name": "hello-world",
+  "name": "hello-world-nwjs",
   "main": "index.html",
-  "version": "1.0.0",
-  "dependencies": {
-    "nw": "^0.16.1"
-  }, 
-  "scripts": {
-    "start": "node_modules/.bin/nw ."
-  }
+  "version": "1.0.0"
 }

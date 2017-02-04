@@ -2,19 +2,20 @@
   "name": "lorikeet",
   "version": "1.0.0",
   "main": "main.js",
-  "author": "Paul Jensen <paul@anephenix.com>",
+	"author": "Paul Jensen <paul@anephenix.com>",
 	"description": "A file explorer application",
   "dependencies": {
-    "async": "^2.0.0-rc.2",
-    "lunr": "^0.7.0",
-    "osenv": "^0.1.3"
+    "async": "^2.1.4",
+    "lunr": "^0.7.2",
+    "osenv": "^0.1.4"
   },
-  "scripts": {
+	"scripts" : {
 		"pack": "build",
 		"dist": "build"
 	},
   "devDependencies": {
-    "electron-builder": "^3.9.0"
+    "electron": "^1.4.14",
+    "electron-builder": "^11.4.4"
   },
 	"build": {}
 }

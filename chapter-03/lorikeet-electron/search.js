@@ -1,7 +1,7 @@
 'use strict';
 
-var lunr = require('lunr');
-var index;
+const lunr = require('lunr');
+let index;
 
 function resetIndex() {
   index = lunr(function () {
@@ -16,14 +16,12 @@ function addToIndex(file) {
 }
 
 function find(query, cb) {
-  if (!index) { resetIndex(); }
+  if (!index) {
+    resetIndex();
+  }
 
-  var results = index.search(query);
+  const results = index.search(query);
   cb(results);
 }
 
-module.exports = {
-  addToIndex: addToIndex,
-  find: find,
-  resetIndex: resetIndex
-};
+module.exports = { addToIndex, find, resetIndex };

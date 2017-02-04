@@ -1,8 +1,0 @@
-{
-	"name" : "fullscreen-app-nwjs",
-	"version" : "1.0.0",
-	"main" : "index.html",
-	"window": {
-		"fullscreen":true
-	}
-}

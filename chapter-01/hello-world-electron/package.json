@@ -1,34 +1,5 @@
 {
-  "name": "hello-world",
-  "version": "0.0.1",
-  "main": "main.js",
-  "build": {
-    "iconUrl": "https://github.com/paulbjensen/lorikeet/raw/master/icon.ico",
-    "osx": {
-      "title": "Hello World",
-      "icon": "icon.icns",
-      "background": "background.png",
-      "icon-size": 80,
-      "contents": [
-        {
-          "x": 448,
-          "y": 220,
-          "type": "link",
-          "path": "/Applications"
-        },
-        {
-          "x": 192,
-          "y": 220,
-          "type": "file",
-          "path": "build/hello-world-electron/osx64/hello-world-electron.app"
-        }
-      ]
-    }
-  },
-  "devDependencies": {
-    "electron-prebuilt": "^1.2.3"
-  },
-  "scripts": {
-    "start" : "node_modules/.bin/electron ."
-  }
+	"name" : "hello-world",
+	"version" : "1.0.0",
+	"main" : "main.js"
 }

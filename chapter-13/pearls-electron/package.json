@@ -1,0 +1,19 @@
+{
+  "name": "pearls-electron",
+  "version": "1.0.0",
+  "description": "A clipboard API example for Electron and the book 'Cross Platform Desktop Applications'",
+  "main": "main.js",
+  "scripts": {
+    "start": "node_modules/.bin/electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "electron",
+    "clipboard"
+  ],
+  "author": "Paul Jensen <paulbjensen@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^1.3.7"
+  }
+}
