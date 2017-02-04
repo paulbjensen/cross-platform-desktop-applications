@@ -14,14 +14,17 @@ function getFilesInFolder(folderPath, cb) {
 }
 
 function inspectAndDescribeFile(filePath, cb) {
-  let result = { file: path.basename(filePath), path: filePath, type: '' };
+  let result = {
+file: path.basename(filePath),
+path: filePath, type: ''
+  };
   fs.stat(filePath, (err, stat) => {
     if (err) {
       cb(err);
-    }	else {
+    } else {
       if (stat.isFile()) {
         result.type = 'file';
-      }
+    	 }
       if (stat.isDirectory()) {
         result.type = 'directory';
       }

@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Full-screen app example</title>
+    <script>
+      'use strict';
+      const gui = require('nw.gui');
+      const win = gui.Window.get();
+
+      function toggleFullScreen () {
+        const button = document.getElementById('fullscreen');
+        if (win.isFullscreen) {
+          win.leaveFullscreen();
+          button.innerText = 'Go full screen';
+        } else {
+          win.enterFullscreen();
+          button.innerText = 'Exit full screen';
+        }
+      }
+
+    </script>
+  </head>
+  <body>
+    <h1>Full-screen app example</h1>
+    <button id="fullscreen" onclick="toggleFullScreen();">Go full screen</button>
+  </body>
+</html>

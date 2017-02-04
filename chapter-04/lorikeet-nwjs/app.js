@@ -1,14 +1,15 @@
 'use strict';
 
-var fileSystem = require('./fileSystem');
-var userInterface = require('./userInterface');
-var search = require('./search');
+const fileSystem = require('./fileSystem');
+const userInterface = require('./userInterface');
+const search = require('./search');
 
 function main() {
-  var folderPath = fileSystem.getUsersHomeFolder();
+  userInterface.bindDocument(window);
+  let folderPath = fileSystem.getUsersHomeFolder();
   userInterface.loadDirectory(folderPath)(window);
-  userInterface.bindSearchField(function (event) {
-    var query = event.target.value;
+  userInterface.bindSearchField((event) => {
+    const query = event.target.value;
     if (query === '') {
       userInterface.resetFilter();
     } else {
