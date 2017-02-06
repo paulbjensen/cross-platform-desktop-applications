@@ -10,8 +10,11 @@ app.on('window-all-closed',() => {
   if (process.platform !== 'darwin') app.quit();
 });
 
+let appPath = app.getAppPath();
+if (process.env.NODE_ENV === 'test') appPath = process.cwd();
+
 app.on('ready', () => {
   mainWindow = new BrowserWindow();
-  mainWindow.loadURL(`file://${app.getAppPath()}/index.html`);
+  mainWindow.loadURL(`file://${appPath}/index.html`);
   mainWindow.on('closed', () => { mainWindow = null; });
 });
