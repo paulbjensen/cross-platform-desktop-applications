@@ -1,5 +1,18 @@
 {
-	"name" : "hello-world",
-	"version" : "1.0.0",
-	"main" : "main.js"
+  "name": "hello-world",
+  "description": "A hello world Electron application",
+  "version": "1.0.0",
+  "author": "Paul Jensen <paul@anephenix.com>",
+  "main": "main.js",
+  "build": {
+    "iconUrl": " https://github.com/paulbjensen/lorikeet/raw/master/icon.ico"
+  },
+  "scripts": {
+    "pack": "build",
+    "dist": "build"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^1.4.15"
+  }
 }
