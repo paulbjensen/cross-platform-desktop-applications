@@ -5,7 +5,27 @@
   "author": "Paul Jensen <paul@anephenix.com>",
   "main": "main.js",
   "build": {
-    "iconUrl": " https://github.com/paulbjensen/lorikeet/raw/master/icon.ico"
+    "iconUrl": " https://github.com/paulbjensen/lorikeet/raw/master/icon.ico",
+		"max": {
+      "title": "Hello World",
+      "icon": "icon.icns",
+      "background": "background.png",
+      "icon-size": 80,
+      "contents": [
+        {
+          "x": 448,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 192,
+          "y": 220,
+          "type": "file",
+          "path": "dist/hello-world-darwin-x64/hello-world.app"
+        }
+      ]
+    }
   },
   "scripts": {
     "pack": "build",
@@ -13,6 +33,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "electron": "^1.4.15"
+    "electron": "^1.4.15",
+    "electron-builder": "^13.5.0"
   }
 }
