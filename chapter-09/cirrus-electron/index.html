@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>Cirrus</title>
+    <link href="app.css" rel="stylesheet" />
+    <script src="app.js"></script>
+  </head>
+  <body>
+		<input type="file" accept="image/*" id="imageFileSelector" class="hidden"/>
+    <input type="file" accept=".html,.htm" id="fileSelector" class="hidden"/>
+		<div id="openFileView">
+			<div>Select a HTML file</div>
+		</div>
+		<div id="appView" class="hidden">
+			<div id="toolbar">
+				<div class="tab" id="design">Design</div>
+				<div class="tab" id="code">Code</div>
+				<div class="tab" id="preview">Preview</div>
+			</div>
+			<div class="area hidden" id="designArea" contenteditable></div>
+			<textarea class="area hidden" id="codeArea"></textarea>
+			<div class="area hidden" id="previewArea"></div>
+		</div>
+  </body>
+</html>

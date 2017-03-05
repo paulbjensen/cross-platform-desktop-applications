@@ -1,0 +1,12 @@
+{
+  "name": "Cirrus",
+  "version": "1.0.0",
+  "main": "main.js",
+  "dependencies": {
+    "dialogs": "^1.1.17",
+    "electron-prebuilt": "^1.2.2"
+  },
+  "scripts": {
+    "start": "node_modules/.bin/electron ."
+  }
+}
