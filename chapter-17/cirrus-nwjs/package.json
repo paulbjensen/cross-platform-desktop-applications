@@ -1,0 +1,12 @@
+{
+  "name": "cirrus",
+  "version": "1.0.0",
+  "main": "index.html",
+  "window": {
+    "icon": "cirrus-logo.png",
+    "toolbar": true
+  },
+  "devDependencies": {
+    "nw": "^0.12.0"
+  }
+}
