@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "cucumber": "^2.0.0-rc.7",
-    "electron": "^1.4.14",
+    "electron": "^9.1.0",
     "electron-builder": "^11.4.4",
     "mocha": "^3.2.0",
     "spectron": "^3.5.0"
